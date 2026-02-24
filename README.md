@@ -53,13 +53,6 @@ Aplicando el modelo ganador, se proyecta una continuación robusta de la tendenc
 
 *(Nota: La línea suavizada representa el valor esperado bajo un escenario de crecimiento lineal de la generación, mientras que la sombra rosa gestiona el riesgo indicando el intervalo de confianza del 95%).*
 
----
-
-## ⚙️ Reproducibilidad del Proyecto
-Para ejecutar este proyecto localmente:
-1. Clona el repositorio: `git clone https://github.com/irojasga0721/Proyecto-de-grado.git`
-2. Instala las dependencias: `pip install -r requirements.txt`
-3. Ejecuta el cuaderno de Jupyter ubicado en la raíz del proyecto.
 
 ## ✒️ Autor
 * **Iván Darío Rojas Galvis** - *Especialización en Ciencia de Datos - Universidad Nacional Abierta y a Distancia (UNAD)*
