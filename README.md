@@ -19,7 +19,7 @@ Una predicción inexacta de cuánta energía va a consumir el país puede result
 ## 🔍 Análisis Exploratorio y Multivariable
 Antes de predecir, fue crucial entender la relación entre las variables. Mediante una Matriz de Correlación de Pearson, se confirmó matemáticamente la hipótesis del negocio: la demanda de energía tiene una dependencia directa de los ciclos de precipitación y una correlación casi perfecta con la generación.
 
-*(Asegúrate de haber subido la imagen heatmap.png a tu repositorio)*
+
 ![Matriz de Correlación](heatmap.png)
 
 ---
@@ -29,7 +29,6 @@ Se descartó la validación aleatoria tradicional para evitar fugas de datos (*d
 
 El reto principal para los modelos de Inteligencia Artificial (Random Forest) fue su naturaleza "agnóstica al tiempo", requiriendo una compleja ingeniería de características (creación de rezagos o *Lags*). Por el contrario, el modelo **SARIMAX (1, 0, 1) x (0, 0, 2, 12)** capturó la estructura estacional de manera nativa.
 
-*(Asegúrate de haber subido la imagen sarimax_ajuste.png a tu repositorio)*
 ![Ajuste del Modelo SARIMAX](sarimax_ajuste.png)
 
 ---
@@ -48,7 +47,7 @@ El escrutinio en los datos de prueba demostró una superioridad técnica abrumad
 ## 🚀 Proyección Final (2024 - 2030)
 Aplicando el modelo ganador, se proyecta una continuación robusta de la tendencia lineal positiva. El hallazgo más relevante para la planificación estatal es que la demanda mensual **superará la barrera de los 10,000 GWh para finales de la década**, exigiendo a la UPME y a los agentes del mercado una expansión proporcional de la capacidad instalada.
 
-*(Asegúrate de haber subido la imagen pronostico_2030.png a tu repositorio)*
+
 ![Pronóstico de Demanda 2030](pronostico_2030.png)
 
 *(Nota: La línea suavizada representa el valor esperado bajo un escenario de crecimiento lineal de la generación, mientras que la sombra rosa gestiona el riesgo indicando el intervalo de confianza del 95%).*
