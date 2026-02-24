@@ -5,34 +5,61 @@
 ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Random%20Forest-orange)
 ![Status](https://img.shields.io/badge/Status-Completado-brightgreen)
 
-## 📖 Descripción del Proyecto
-Este repositorio contiene el trabajo de grado para la Especialización en Ciencia de Datos (UNAD). El proyecto aborda la necesidad crítica de proyectar la demanda de energía del Sistema Interconectado Nacional (SIN) en Colombia, un país con alta dependencia hidroeléctrica (70%).
+## 🌍 Contexto y Problemática: ¿Por qué este proyecto?
+El Sistema Interconectado Nacional (SIN) de Colombia tiene una característica que lo hace único y vulnerable: **el 70% de su generación de energía depende del agua** (hidroeléctricas). Esto significa que nuestra seguridad energética está atada a los fenómenos climáticos como El Niño y La Niña.
 
-Se realizó un análisis comparativo riguroso entre enfoques de **Machine Learning** (Random Forest, Gradient Boosting) y un modelo **Econométrico Multivariable** (SARIMAX), incorporando variables exógenas clave como la **Generación de Energía** y la **Precipitación**.
+Una predicción inexacta de cuánta energía va a consumir el país puede resultar en dos escenarios catastróficos:
+1. **Déficit:** Apagones y racionamientos severos por falta de planificación.
+2. **Sobrecostos:** Inversiones ineficientes o compras de energía de emergencia a precios exorbitantes.
 
-## 🛠️ Metodología Resumida
-El proyecto se desarrolló en tres fases:
-1. **Análisis Estructural (EDA):** Descomposición de la serie temporal, prueba Dickey-Fuller y análisis de correlación (Heatmap).
-2. **Modelado:** Implementación de SARIMAX `(1, 0, 1) x (0, 0, 2, 12)` y modelos de Machine Learning con ingeniería de características (*Lags*).
-3. **Evaluación Comparativa:** Medición del desempeño utilizando métricas de error (MAPE, R²) en validación cruzada temporal.
+**El objetivo de este proyecto** es resolver esta incertidumbre creando una herramienta de predicción de alta precisión mensual hasta el año 2030. Para ello, se puso a prueba la econometría clásica (SARIMAX) contra algoritmos modernos de Machine Learning (Random Forest, Gradient Boosting), integrando variables críticas como la **Precipitación** y la **Generación histórica**.
 
-## 📊 Resultados Clave (El Ganador)
-El modelo **SARIMAX** demostró una superioridad técnica abrumadora para capturar la estructura temporal y estacional frente a los modelos de caja negra, logrando un error porcentual mínimo:
+---
 
-| Modelo | MAPE (%) | R² |
-| :--- | :---: | :---: |
-| **SARIMAX (Ganador)** | **1.37%** | **0.992** |
-| Random Forest | 3.43% | Negativo |
-| Gradient Boosting | 3.04% | 0.095 |
+## 🔍 Análisis Exploratorio y Multivariable
+Antes de predecir, fue crucial entender la relación entre las variables. Mediante una Matriz de Correlación de Pearson, se confirmó matemáticamente la hipótesis del negocio: la demanda de energía tiene una dependencia directa de los ciclos de precipitación y una correlación casi perfecta con la generación.
 
-### 📈 Pronóstico a 2030
-Se proyecta un crecimiento sostenido de la demanda, estimando que superará la barrera de los **10,000 GWh mensuales** para el final de la década.
+*(Asegúrate de haber subido la imagen heatmap.png a tu repositorio)*
+![Matriz de Correlación](heatmap.png)
 
-## 🚀 Cómo reproducir este proyecto
-1. Clona este repositorio.
-2. Instala las dependencias necesarias:
-   `pip install -r requirements.txt`
-3. Ejecuta el notebook principal: `Analisis_Prediccion_Demanda_SIN.ipynb`
+---
+
+## 🛠️ Metodología y Modelado
+Se descartó la validación aleatoria tradicional para evitar fugas de datos (*data leakage*) y se utilizó un *Time-Based Split* (Entrenamiento: 2010-2021 | Prueba: 2022-2023). 
+
+El reto principal para los modelos de Inteligencia Artificial (Random Forest) fue su naturaleza "agnóstica al tiempo", requiriendo una compleja ingeniería de características (creación de rezagos o *Lags*). Por el contrario, el modelo **SARIMAX (1, 0, 1) x (0, 0, 2, 12)** capturó la estructura estacional de manera nativa.
+
+*(Asegúrate de haber subido la imagen sarimax_ajuste.png a tu repositorio)*
+![Ajuste del Modelo SARIMAX](sarimax_ajuste.png)
+
+---
+
+## 🏆 Resultados: El Ganador
+El escrutinio en los datos de prueba demostró una superioridad técnica abrumadora del modelo econométrico sobre las alternativas de "caja negra" en el modelado de tendencias fuertes:
+
+| Modelo | MAPE (%) | R² | Robustez de Tendencia |
+| :--- | :---: | :---: | :---: |
+| **SARIMAX** | **1.37%** | **0.992** | Excelente |
+| Random Forest | 3.43% | Negativo | Deficiente |
+| Gradient Boosting | 3.04% | 0.095 | Deficiente |
+
+---
+
+## 🚀 Proyección Final (2024 - 2030)
+Aplicando el modelo ganador, se proyecta una continuación robusta de la tendencia lineal positiva. El hallazgo más relevante para la planificación estatal es que la demanda mensual **superará la barrera de los 10,000 GWh para finales de la década**, exigiendo a la UPME y a los agentes del mercado una expansión proporcional de la capacidad instalada.
+
+*(Asegúrate de haber subido la imagen pronostico_2030.png a tu repositorio)*
+![Pronóstico de Demanda 2030](pronostico_2030.png)
+
+*(Nota: La línea suavizada representa el valor esperado bajo un escenario de crecimiento lineal de la generación, mientras que la sombra rosa gestiona el riesgo indicando el intervalo de confianza del 95%).*
+
+---
+
+## ⚙️ Reproducibilidad del Proyecto
+Para ejecutar este proyecto localmente:
+1. Clona el repositorio: `git clone https://github.com/irojasga0721/Proyecto-de-grado.git`
+2. Instala las dependencias: `pip install -r requirements.txt`
+3. Ejecuta el cuaderno de Jupyter ubicado en la raíz del proyecto.
 
 ## ✒️ Autor
-* **Iván Darío Rojas Galvis** - *Estudiante Especialización en Ciencia de Datos - UNAD*
+* **Iván Darío Rojas Galvis** - *Especialización en Ciencia de Datos - Universidad Nacional Abierta y a Distancia (UNAD)*
